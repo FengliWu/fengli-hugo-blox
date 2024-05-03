@@ -6,5 +6,5 @@ module:
       target: layouts/partials/blocks/
       includeFiles: '**.html'
     - source: blox
-      target: assets/dist/community/blox/
-      includeFiles: '**.css'
+      target: assets/scss/wowchemy/widgets/
+      includeFiles: '**.scss'
