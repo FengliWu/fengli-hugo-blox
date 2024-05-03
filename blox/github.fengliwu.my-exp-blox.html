@@ -1,80 +1,15 @@
-{{/* Hugo Blox: Experience */}}
-{{/* Documentation: https://hugoblox.com/blocks/ */}}
-{{/* License: https://github.com/HugoBlox/hugo-blox-builder/blob/main/LICENSE.md */}}
-
-{{/* Initialise */}}
-{{ $page := .wcPage }}
-{{ $block := .wcBlock }}
-{{ $columns := $block.design.columns | default "1" }}
-
 <!-- Experience widget -->
-<div class="section-heading col-12 col-lg-4 mb-3 mb-lg-0 d-flex flex-column align-items-center align-items-lg-start">
-  {{ with $block.content.text }}{{ . | emojify | $page.RenderString }}{{ end }}
-
-  {{ if $block.content.items }}
-  {{ $exp_len := len $block.content.items }}
-
-  {{/* Default to user's custom order (as requested in #1761) as Hugo doesn't support multiple sorts on params. */}}
-  {{ range $idx, $key := $block.content.items }}
-  <div class="row experience">
-    <!-- Timeline -->
-    <div class="col-auto text-center flex-column d-none d-sm-flex">
-      <div class="row h-50">
-        <div class="col {{if gt $idx 0}}border-right{{end}}">&nbsp;</div>
-        <div class="col">&nbsp;</div>
-      </div>
-      <div class="m-2">
-        <span class="badge badge-pill border {{if not .date_end}}exp-fill{{end}}">&nbsp;</span>
-      </div>
-      <div class="row h-50">
-        <div class="col {{if lt $idx (sub $exp_len 1)}}border-right{{end}}">&nbsp;</div>
-        <div class="col">&nbsp;</div>
-      </div>
-    </div>
-    <!-- Content -->
-    <div class="col py-2">
-      <div class="card">
-        <div class="card-body">
-
-          {{- if .company_logo}}
-          {{- $svg_icon := resources.Get (printf "media/icons/brands/%s.svg" .company_logo) -}}
-          {{ if not $svg_icon }}{{ errorf "Brand logo not found at `assets/media/icons/brands/%s.svg`" .company_logo }}{{end}}
-          <div class="d-flex align-content-start">
-            <div class="mr-2 mb-2">
-              {{- with .company_url}}<a href="{{.}}" target="_blank" rel="noopener">{{end -}}
-              <img src="{{ $svg_icon.RelPermalink }}" width="56" height="56" alt="{{.company | plainify}}" loading="lazy">
-              {{- with .company_url}}</a>{{end -}}
-            </div>
-            <div>
-          {{ end }}
-
-              <div class="section-subheading card-text exp-title text-muted my-0">{{.title | markdownify | emojify}}</div>
-              <div class="section-subheading card-text exp-company text-muted my-0">
-                {{- with .company_url}}<a href="{{.}}" target="_blank" rel="noopener">{{end}}{{.company | markdownify | emojify}}{{with .company_url}}</a>{{end -}}
-              </div>
-              <div class="text-muted exp-meta">
-                {{ (time .date_start) | time.Format ($block.Params.date_format | default "January 2006") }} –
-                {{ if .date_end}}
-                  {{ (time .date_end) | time.Format ($block.Params.date_format | default "January 2006") }}
-                {{else}}
-                  {{ i18n "present" | default "Present" }}
-                {{end}}
-                {{with .location}}
-                  <span class="middot-divider"></span>
-                  <span>{{.}}</span>
-                {{end}}
-              </div>
-
-          {{- if .company_logo}}
-            </div>
-          </div>
-          {{end}}
-
-          {{with .description}}<div class="card-text">{{. | markdownify | emojify}}</div>{{end}}
-        </div>
-      </div>
-    </div>
-  </div>
-  {{end}}
-  {{end}}
+<div class="section-heading col-12 col-lg-4 mb-3 mb-lg-0 d-flex flex-column align-items-center align-items-lg-start"><h1 class="mb-0">Experience</h1></div><div class="col-12 col-lg-8"><div class="row experience"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class="col">&nbsp;</div><div class="col">&nbsp;</div></div><div class="m-2"><span class="badge badge-pill border exp-fill">&nbsp;</span></div><div class="row h-50"><div class="col border-right">&nbsp;</div><div class="col">&nbsp;</div></div></div><div class="col py-2"><div class="card"><div class="card-body"><div class="section-subheading card-title exp-title text-muted my-0">Data Science Intern</div><div class="section-subheading card-title exp-company text-muted my-0"><a href="http://www.volvo.com/" target="_blank" rel="noopener">Volvo</a></div><div class="text-muted exp-meta">February 2024 –
+Present
+<span class="middot-divider"></span>
+<span>Shanghai, China</span></div></div></div></div></div><div class="row experience"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class="col border-right">&nbsp;</div><div class="col">&nbsp;</div></div><div class="m-2"><span class="badge badge-pill border">&nbsp;</span></div><div class="row h-50"><div class="col border-right">&nbsp;</div><div class="col">&nbsp;</div></div></div><div class="col py-2"><div class="card"><div class="card-body"><div class="section-subheading card-title exp-title text-muted my-0">Data Analytics Intern</div><div class="section-subheading card-title exp-company text-muted my-0"><a href="http://www.hello-inc.com/" target="_blank" rel="noopener">Hello (formerly Hellobike)</a></div><div class="text-muted exp-meta">June 2023 –
+December 2023
+<span class="middot-divider"></span>
+<span>Shanghai, China</span></div></div></div></div></div><div class="row experience"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class="col border-right">&nbsp;</div><div class="col">&nbsp;</div></div><div class="m-2"><span class="badge badge-pill border">&nbsp;</span></div><div class="row h-50"><div class="col border-right">&nbsp;</div><div class="col">&nbsp;</div></div></div><div class="col py-2"><div class="card"><div class="card-body"><div class="section-subheading card-title exp-title text-muted my-0">Data Analytics Intern</div><div class="section-subheading card-title exp-company text-muted my-0"><a href="http://www.aon.com/" target="_blank" rel="noopener">Aon</a></div><div class="text-muted exp-meta">June 2022 –
+February 2023
+<span class="middot-divider"></span>
+<span>Shanghai, China</span></div></div></div></div></div><div class="row experience"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class="col border-right">&nbsp;</div><div class="col">&nbsp;</div></div><div class="m-2"><span class="badge badge-pill border">&nbsp;</span></div><div class="row h-50"><div class="col">&nbsp;</div><div class="col">&nbsp;</div></div></div><div class="col py-2"><div class="card"><div class="card-body"><div class="section-subheading card-title exp-title text-muted my-0">Founding Intern</div><div class="section-subheading card-title exp-company text-muted my-0"><a href="http://htedu.tech/" target="_blank" rel="noopener">Haita Tech</a></div><div class="text-muted exp-meta">August 2021 –
+March 2022
+<span class="middot-divider"></span>
+<span>Shanghai, China</span></div></div></div></div></div></div>
 </div>
