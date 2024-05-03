@@ -9,6 +9,12 @@
 
 <!-- Experience widget -->
 <div class="section-heading col-12 col-lg-4 mb-3 mb-lg-0 d-flex flex-column align-items-center align-items-lg-start"><h1 class="mb-0">Education</h1></div>
+
+  {{ if $block.content.items }}
+  {{ $exp_len := len $block.content.items }}
+
+  {{/* Default to user's custom order (as requested in #1761) as Hugo doesn't support multiple sorts on params. */}}
+  {{ range $idx, $key := $block.content.items }}
   <div class="row experience">
     <!-- Timeline -->
     <div class="col-auto text-center flex-column d-none d-sm-flex">
