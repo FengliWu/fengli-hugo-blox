@@ -8,7 +8,8 @@
 {{ $columns := $block.design.columns | default "1" }}
 
 <!-- Experience widget -->
-<div class="section-heading col-12 col-lg-4 mb-3 mb-lg-0 d-flex flex-column align-items-center align-items-lg-start"><h1 class="mb-0">Education</h1></div>
+<div class="section-heading col-12 col-lg-4 mb-3 mb-lg-0 d-flex flex-column align-items-center align-items-lg-start">
+  {{ with $block.content.text }}{{ . | emojify | $page.RenderString }}{{ end }}
 
   {{ if $block.content.items }}
   {{ $exp_len := len $block.content.items }}
